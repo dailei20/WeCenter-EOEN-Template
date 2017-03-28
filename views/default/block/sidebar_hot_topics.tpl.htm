@@ -1,0 +1,26 @@
+<!-- 热门话题 -->
+<div class="aw-side-Nav">
+	<div class="aw-mod-Nav">
+		<div class="mod-head">
+			<a href="topic/channel-hot" class="pull-right"><?php _e('更多'); ?> <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+			<h3><?php _e('热门话题'); ?></h3>
+		</div>
+		<div class="mod-body-Nav">
+			<ul>
+				<?php if (is_array($this->sidebar_hot_topics)) { ?>
+				<?php foreach($this->sidebar_hot_topics AS $key => $val) {?>
+				<li>
+					<p class="img">
+						<a href="topic/<?php echo $val['topic_title'];?>">
+						<img src="<?php echo get_topic_pic_url('mid', $val['topic_pic']); ?>" /></a>
+					</p>
+					<h4><a href="topic/<?php echo $val['topic_title'];?>"><?php echo $val['topic_title'];?></a></h4>
+					<p class="txt"><?php _e('%s 个问题', '<b>' . $val['discuss_count'] . '</b>'); ?>, <?php _e('%s 人关注', '<b>' . $val['focus_count'] . '</b>'); ?></p>
+				</li>
+				<?php } ?>
+				<?php } ?>
+			</ul>
+		</div>
+	</div>
+</div>
+<!-- end 热门话题 -->

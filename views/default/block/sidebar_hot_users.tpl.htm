@@ -1,0 +1,26 @@
+<!-- 热门用户 -->
+<div class="aw-side-Nav" style="margin-top:20px">
+	<div class="aw-mod-Nav">
+		<div class="mod-head">
+			<a href="people/" class="pull-right"><?php _e('更多'); ?> <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+			<h3><?php _e('热门用户'); ?></h3>
+		</div>
+		<div class="mod-body-Nav">
+			<ul>
+				<?php if (is_array($this->sidebar_hot_users)) { ?>
+				<?php foreach($this->sidebar_hot_users AS $key => $val) {?>	
+				<li>
+					<p class="img">
+						<a href="people/<?php echo $val['url_token']; ?>">
+						<img src="<?php echo get_avatar_url($val['uid'], 'mid'); ?>" /></a>
+					</p>
+					<h4><a href="people/<?php echo $val['url_token']; ?>"><?php echo $val['user_name']; ?></a></h4>
+					<p class="txt"><?php _e('%s 个问题', '<b>' . $val['answer_count'] . '</b>'); ?>, <?php _e('%s 次赞同', '<b>' . $val['agree_count'] . '</b>'); ?></p>
+				</li>
+				<?php } ?>
+				<?php } ?>
+			</ul>
+		</div>
+	</div>
+</div>
+<!-- end 热门用户 -->

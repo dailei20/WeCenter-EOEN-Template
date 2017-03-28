@@ -1,0 +1,16 @@
+<!-- 热门文章 -->
+<div class="aw-side-Nav" style="margin-top:20px">
+	<div class="aw-mod-Nav">
+		<div class="mod-head">
+			<h3><?php _e('热门文章'); ?></h3>
+		</div>
+		<div class="mod-body-Nav">
+			<ul>
+				<?php foreach($this->hot_articles AS $key => $val) { ?>
+				<li><a href="article/<?php echo $val['id']; ?>"><?php echo $val['title']; ?></a></li>
+				<?php } ?>
+			</ul>
+		</div>
+	</div>
+</div>
+<!-- end 热门文章 -->

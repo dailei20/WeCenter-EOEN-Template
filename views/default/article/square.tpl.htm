@@ -1,0 +1,74 @@
+<?php TPL::output('global/header.tpl.htm'); ?>
+<div class="aw-container-wrap">
+	<div class="container">
+		<!-- 首页内容 -->
+		<div class="IndexPage">
+			<div class="panel-Page">
+				<ul class="list-inline topic-filter">
+					<li class="popover-with-html active"><a href="article/"><?php _e('全部文章'); ?></a></li>
+				</ul>
+				<!-- 列表加载 -->
+				<div class="list-Page-left">
+					<?php if ($this->article_list) { ?>
+						<?php foreach ($this->article_list AS $key => $val) { ?>
+						<div class="aw-item">
+							<div class="Squart-list">
+								<a class="aw-user-name hidden-xs" href="people/<?php echo $val['user_info']['url_token']; ?>">
+									<img alt="" src="<?php echo get_avatar_url($val['uid'], 'mid'); ?>" />
+								</a>
+								<span><b><?php echo $val['user_info']['user_name']; ?></b>  &nbsp;<?php echo date_friendly($val['add_time']); ?></span>
+							</div>
+							<div class="aw-content">
+								<div class="mod-body Squart-center">
+									<h2><a href="article/<?php echo $val['id']; ?>"><?php echo $val['title']; ?></a></h2>
+									<div class="content-wrap">
+										<div class="content" id="detail_<?php echo $val['id']; ?>">
+											<div class="hide-content markitup-box">
+												<?php echo FORMAT::parse_attachs(nl2br(FORMAT::parse_bbcode($val['message']))); ?>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="mod-footer clearfix Squart-Footer">
+									<?php foreach($this->article_topics[$val['id']] as $topic_key => $topic_val) { ?>
+									<span class="topic-tag-squ">
+										<a href="topic/<?php echo $topic_val['url_token']; ?>" class="text" data-id="<?php echo $topic_val['topic_id']; ?>"><i class="fa fa-thumb-tack" aria-hidden="true"></i> <?php echo $topic_val['topic_title']; ?></a>&nbsp;&nbsp;
+									</span>
+									<?php } ?>
+									<span class="more-operate text-color-99b">
+										<a class="text-color-99b" href="article/<?php echo $val['id']; ?>"><i class="fa fa-comments" aria-hidden="true"></i> <?php echo $val['comments']; ?></a>&nbsp;&nbsp; 
+										<a class="text-color-99b dropdown-toggle" data-toggle="dropdown">
+											<i class="fa fa-share-square-o" aria-hidden="true"></i> <?php _e('分享'); ?>
+										</a>
+										<div aria-labelledby="dropdownMenu" role="menu" class="aw-dropdown shareout pull-right Sque_share">
+											<ul class="aw-dropdown-list">
+												<li><a onclick="AWS.User.share_out({webid: 'tsina', content: $(this).parents('.aw-question-detail').find('.markitup-box')});"><i class="fa fa-weibo" aria-hidden="true"></i> <?php _e('微博'); ?></a></li>
+												<li><a onclick="AWS.User.share_out({webid: 'qzone', content: $(this).parents('.aw-question-detail')});"><i class="fa fa-qq" aria-hidden="true"></i> <?php _e('空间'); ?></a></li>
+												<li><a onclick="AWS.User.share_out({webid: 'weixin', content: $(this).parents('.aw-question-detail')});"><i class="fa fa-weixin" aria-hidden="true"></i> <?php _e('微信'); ?></a></li>
+											</ul>
+										</div>
+									</span>
+								</div>
+							</div>
+						</div>
+						<?php } ?>
+
+						<?php echo $this->pagination; ?>
+
+						<?php } ?>
+				</div>
+				<!-- end 列表加载 -->
+			</div>
+		
+		</div>
+		<!-- end 首页内容 -->
+		<!-- 侧边栏 -->
+		<div class="sideNav">
+		<?php TPL::output('block/sidebar_publish.tpl.htm'); ?>
+		<?php TPL::output('block/sidebar_article.tpl.htm'); ?>
+		<?php TPL::output('block/sidebar_hot_topics.tpl.htm'); ?>
+		</div>
+		<!-- end 侧边栏 -->
+	</div>
+</div>
+<?php TPL::output('global/footer.tpl.htm'); ?>
