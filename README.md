@@ -15,5 +15,5 @@ ___
 > * 话题详情页
 > * 把登录注册也改为了弹窗方式（借助于layer）
 
-模板演示地址：https://amazinggrace.cc/ （勿发布无任何无意义的测试帖）
+模板演示地址：http://wecenter.eoen.org/
 
